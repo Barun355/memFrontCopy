@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { WidthFull } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
 function Blitz() {
 	const navigate = useNavigate();
 	useEffect(() => {
-			if (!localStorage.getItem("jwt")) {
-				toast.error("You have to login!! To Access blitzkrieg  ❤️❤️");
-				navigate("/register");
-			}
-		}, []);
-	
+		if (!localStorage.getItem("jwt")) {
+			toast.error("You have to login!! To Access blitzkrieg  ❤️❤️");
+			navigate("/register");
+		}
+	}, [navigate]);
+
 	const handleGoogleAuth = () => {
 		// Send a request to your backend to initiate Google authentication
 		fetch("https://pbscbackend23.onrender.com/auth")
@@ -59,49 +58,55 @@ function Blitz() {
 			});
 	}, []);
 
-	return (
-		<div>
-			<h2
-				style={{
-					fontSize: "30px",
-					marginBottom: "3rem",
-					marginTop: "3rem",
-					fontWeight: "bolder",
-					textAlign: "center",
-				}}
-			>
-				Video List
-			</h2>
-			<div
-				style={{
-					marginLeft: "120px",
-				}}
-			>
-				{videos.length > 0 ? (
-					<ul>
-						{videos.map((video) => (
-							<li key={video.id}>
-								<video controls
-									style={{
-										width: "600px",
-										
-								}}
-								>
-									<source
-										src={`https://drive.google.com/uc?export=download&id=${video.id}`}
-										type="video/mp4"
-									/>
-								</video>
-								<p>{video.name}</p>
-							</li>
-						))}
-					</ul>
-				) : (
-					<button onClick={handleGoogleAuth} className="btn btn-primary">Sign in with Google for blitzkrieg</button>
-				)}
+	if (!loading) {
+		return (
+			<div>
+				<h2
+					style={{
+						fontSize: "30px",
+						marginBottom: "3rem",
+						marginTop: "3rem",
+						fontWeight: "bolder",
+						textAlign: "center",
+					}}
+				>
+					Video List
+				</h2>
+				<div
+					style={{
+						marginLeft: "120px",
+					}}
+				>
+					{videos.length > 0 ? (
+						<ul>
+							{videos.map((video) => (
+								<li key={video.id}>
+									<video controls
+										style={{
+											width: "600px",
+
+										}}
+									>
+										<source
+											src={`https://drive.google.com/uc?export=download&id=${video.id}`}
+											type="video/mp4"
+										/>
+									</video>
+									<p>{video.name}</p>
+								</li>
+							))}
+						</ul>
+					) : (
+						<button onClick={handleGoogleAuth} className="btn btn-primary">Sign in with Google for blitzkrieg</button>
+					)}
+				</div>
 			</div>
-		</div>
-	);
+		)
+	} else {
+		return (
+			<h1>Loading</h1>
+		)
+	}
 }
 
 export default Blitz;

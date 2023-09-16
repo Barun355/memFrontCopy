@@ -4,22 +4,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 function Signin() {
 	const navigate = useNavigate(); // Ensure you have a Router component wrapping this component
-	
+
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	
-	const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-	
+
 	const notifyA = (message) => toast.error(message);
 	const notifyB = (message) => toast.success(message);
 
 	const postData = async () => {
-		if (!emailRegex.test(email)) {
-			notifyA("Invalid Email");
-			return;
-		}
-		
-
 		try {
 			const response = await axios.post(
 				"https://pbscbackend23.onrender.com/signin",
@@ -36,7 +28,7 @@ function Signin() {
 				console.log(response.data);
 				localStorage.setItem("jwt", response.data.token);
 				localStorage.setItem("user", JSON.stringify(response.data.user));
-			
+
 				navigate("/");
 			}
 		} catch (error) {
@@ -51,12 +43,6 @@ function Signin() {
 
 	return (
 		<div>
-			{/*
-  Heads up! 👋
-
-  Plugins:
-    - @tailwindcss/forms
-*/}{" "}
 			<section className="relative flex flex-wrap lg:h-screen lg:items-center">
 				<div className="w-full px-4 pt-0 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
 					<div className="mx-auto max-w-lg text-center">
@@ -104,6 +90,7 @@ function Signin() {
 										border: "1px solid purple",
 										boxShadow: "0 0 5pt 2pt rgba(224, 0, 0, 0.24)",
 									}}
+									required
 								/>
 
 								<span className="absolute inset-y-0 end-0 grid place-content-center px-4">
@@ -141,6 +128,7 @@ function Signin() {
 										border: "1px solid purple",
 										boxShadow: "0 0 5pt 2pt rgba(224, 0, 0, 0.24)",
 									}}
+									required
 								/>
 
 								<span className="absolute inset-y-0 end-0 grid place-content-center px-4">

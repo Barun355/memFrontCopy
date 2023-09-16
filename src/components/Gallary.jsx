@@ -1,5 +1,5 @@
 import React from "react";
-import { MDBContainer, MDBCol, MDBRow } from "mdb-react-ui-kit";
+import { MDBCol, MDBRow } from "mdb-react-ui-kit";
 import './Gallary.css'
 export default function Gallary() {
 	return (

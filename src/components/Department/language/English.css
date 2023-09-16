@@ -20,7 +20,7 @@ body {
   font-size: 2rem;
   margin-bottom: 20px; 
   margin-left: 1rem;
-   &:after {
+   /* &:after {
           content: "";
           margin: 4px 8px 0px;
           display: block;
@@ -29,7 +29,7 @@ body {
           border-radius: 2px;
 
           background: linear-gradient(5deg, #ff0055, #611c1c); 
-        }
+        } */
   }
 
   #sidebar-wrapper .list-group {
@@ -70,7 +70,7 @@ body {
   .list-group-flush a{
     margin-bottom: 20px;
     
-		&:after {
+		/* &:after {
 			content: "";
 
 			position: absolute;
@@ -85,9 +85,9 @@ body {
 			will-change: transform;
 			transform-origin: right;
 			transition: transform 0.5s cubic-bezier(0.2, 0.6, 0.35, 1);
-		}
+		} */
 
-		&:not(.active) {
+		/* &:not(.active) {
 				color: #000000;
 		}
 
@@ -99,7 +99,7 @@ body {
 				transform: scaleX(1);
 				transform-origin: left;
 			}
-		}
+		} */
   }.MainDiv{
    padding-top:60px;
     background-color: whitesmoke;

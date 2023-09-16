@@ -8,7 +8,7 @@ function ResultsFrame2022() {
 					src="https://pbsc.siddharthaexam.in/Admin/stmtofmarks2022.php?Batch=2022"
 					width="100%"
 					height="1500px"
-					
+					title='This is ResultsFrame 2022'
 				></iframe>
 			</div>
 		</div>
